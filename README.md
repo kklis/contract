@@ -28,7 +28,7 @@ int gcd(int a, int b)
 }
 ```
 
-According to the [definition](http://en.wikipedia.org/wiki/Greatest_common_divisor) "the greatest common divisor of two or more integers (at least one of which is not zero), is the largest positive integer that divides the numbers without a remainder". To make sure that the gcd() function meets the definition we create a *contract*, which says: "if provided arguments are two integers, and at least one of them is not zero, than the result is an integer that divides both numbers without a reminder". We can divide this contract into a precodition ("provided arguments are two integers, and at least one of them is not zero") and a postcondition ("the result is an integer that divides both numbers without a reminder"), which can be written down as follows:
+According to the [definition](http://en.wikipedia.org/wiki/Greatest_common_divisor) "the greatest common divisor of two or more integers (at least one of which is not zero), is the largest positive integer that divides the numbers without a remainder". To make sure that the gcd() function meets the definition we create a **contract**, which says: "if provided arguments are two integers, and at least one of them is not zero, than the result is an integer that divides both numbers without a reminder". We can divide this contract into a precodition ("provided arguments are two integers, and at least one of them is not zero") and a postcondition ("the result is an integer that divides both numbers without a reminder"), which can be written down as follows:
 
 ```cpp
 // Calculate greatest common divisor of two integers
@@ -48,4 +48,4 @@ int gcd(int a, int b)
 }
 ```
 
-Conditions within REQUIRES and ENSURES statements must evaluate to true. If they don't, it means that the contract has been broken, and a *contract::exception* is raised.
+Conditions within REQUIRES and ENSURES statements must evaluate to true. If they don't, it means that the contract has been broken, and a **contract::exception** is raised.
