@@ -1,6 +1,6 @@
 ### DESCRIPTION
 
-This is a set of C++ macros implementing basic [software contracts](http://en.wikipedia.org/wiki/Design_by_contract).
+This is a set of C++ macros implementing basic [software contracts](http://weblambdazero.blogspot.com/2013/09/design-by-contract.html).
 
 ### INSTALLATION
 
@@ -49,3 +49,28 @@ int gcd(int a, int b)
 ```
 
 Conditions within REQUIRES and ENSURES statements must evaluate to true. If they don't, it means that the contract has been broken, and a **contract::exception** is raised.
+
+### FINAL NOTES
+
+Make sure you don't use a combination of REQUIRES and ENSURES which are mutually dependent, for example:
+
+```cpp
+bool prime(int x)
+{
+    // some code here
+
+    ENSURES(!compound(result))
+    return result;
+}
+
+bool compound(int x)
+{
+    // some code here
+
+    ENSURES(!prime(result))
+    return result;
+}
+```
+
+
+This will lead to cyclic execution of both functions and will result either in infinite loop or stack overflow.
