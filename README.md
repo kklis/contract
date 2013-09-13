@@ -50,6 +50,14 @@ int gcd(int a, int b)
 
 Conditions within REQUIRES and ENSURES statements must evaluate to true. If they don't, it means that the contract has been broken, and a **contract::exception** is raised.
 
+### TURNING OFF CONSTRAINT CHECKING
+
+If the constraint checking is an issue (for example decreases your code performance) you can turn it off by defining NDEBUG symbol during compilation. It is the very same symbol that is used by C/C++ compilers to control the behavior of the standard assert() macro:
+
+```sh
+gcc -DNDEBUG example.cpp
+```
+
 ### FINAL NOTES
 
 Make sure you don't use a combination of REQUIRES and ENSURES which are mutually dependent, for example:
@@ -71,6 +79,5 @@ bool compound(int x)
     return result;
 }
 ```
-
 
 This will lead to cyclic execution of both functions and will result either in infinite loop or stack overflow.

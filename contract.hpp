@@ -53,7 +53,12 @@ namespace contract {
     }
 };
 
+#ifdef NDEBUG
+#define ASSURES(condition) (void)0;
+#else
 #define ASSURES(condition) contract::assures(condition, #condition, __FILE__, __LINE__);
+#endif
+
 #define REQUIRES(condition) ASSURES(condition)
 #define ENSURES(condition) ASSURES(condition)
 
